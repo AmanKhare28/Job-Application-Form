@@ -110,7 +110,7 @@ function App() {
 
       try {
         const result = await axios.post(
-          "http://localhost:5000/apply",
+          "https://job-application-form-2.onrender.com/apply",
           formData,
           {
             headers: {

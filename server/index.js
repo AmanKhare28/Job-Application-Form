@@ -14,7 +14,7 @@ const upload = multer({ storage });
 
 mongoose
   .connect(
-    "mongodb+srv://aman22feb2004:aman22@cluster0.c2acp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    `mongodb+srv://aman22feb2004:${process.env.MONGODB_URI}@cluster0.c2acp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
   )
   .then(() => {
     console.log("connected to database");

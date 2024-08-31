@@ -121,11 +121,23 @@ function App() {
         console.log(result.data);
         navigate("/success");
       } catch (error) {
-        if (error.response.status === 400) {
-          document.querySelector(".error").innerHTML = "Alredy Applied";
+        console.error("Error occurred:", error);
+        if (error.response) {
+          // Server responded with a status other than 2xx
+          if (error.response.status === 400) {
+            document.querySelector(".error").innerHTML = "Already Applied";
+          } else {
+            document.querySelector(".error").innerHTML =
+              "Server Error: " + error.response.status;
+          }
+        } else if (error.request) {
+          // Request was made but no response received
+          document.querySelector(".error").innerHTML =
+            "No response from server";
         } else {
-          document.querySelector(".error").innerHTML = "Server Error";
-          console.log(error);
+          // Something happened in setting up the request
+          document.querySelector(".error").innerHTML =
+            "Error: " + error.message;
         }
       }
     }

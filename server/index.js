@@ -7,7 +7,14 @@ import Applicant from "./models/applicant.model.js";
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin:
+    "https://job-application-form-o6vn41h02-amankhare28s-projects.vercel.app", // Your Vercel URL
+  methods: "POST",
+  allowedHeaders: "Content-Type",
+};
+
+app.use(cors(corsOptions));
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
